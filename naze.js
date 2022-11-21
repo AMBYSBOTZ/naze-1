@@ -48,8 +48,8 @@ const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //ubah di config biar ngk emror
-const ini_mark = `0@s.whatsapp.net`
+const nyoutube = ('© XIAO SAN\nInstagram/Sc :\nhttps://instagram.com/granger_ambys?igshid=YmMyMTA2M2Y=')  //ubah di config biar ngk emror
+const ini_mark = `6285798267620@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/naze.jpg')
@@ -1007,11 +1007,11 @@ break
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin berdonasi silahkan scan gambar diatas*\n\n*Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*\n\n*Atau klik link dibawah ini*\n_https://saweria.co/naze_\n\n*Atau Transfer via*\n- *Gopay Dana Ovo Qris ShopeePay*\n Ke nomer berikut : 082113821188\n\n_Terima kasih_` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *follow ig gua kalo ga mau bayar https://instagram.com/granger_ambys?igshid=YmMyMTA2M2Y=*\n\n*Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*\n\n*Atau klik link dibawah ini*\n_https://instagram.com/granger_ambys?igshid=YmMyMTA2M2Y=\n\n*Atau Transfer via*\n- *Dana Pulsa*\n Ke nomer berikut : 085798267620\n\n_Terima kasih_` }, { quoted: m })
             }
             break
             case 'sc': {
-                m.reply('https://wa.me/6285875158363')
+                m.reply('https://wa.me/6285798267620')
             }
             break		 
             case 'subsyt': {
@@ -1028,8 +1028,8 @@ break
   buttons: buttons,
   headerType: 4,
   contextInfo:{externalAdReply:{
-  title: 'Naze Dev',
-  body: 'Subscribe My YouTube', 
+  title: 'AMBYS DOULUO',
+  body: 'follow ig gua', 
   showAdAttribution: true,
   thumbnail: thumb,
   mediaType:2,
