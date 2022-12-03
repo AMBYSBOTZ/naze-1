@@ -48,9 +48,9 @@ const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('© XIAO SAN\nInstagram/Sc :\nhttps://instagram.com/granger_ambys?igshid=YmMyMTA2M2Y=')  //ubah di config biar ngk emror
-const ini_mark = `6285798267620@s.whatsapp.net`
-const ownernya = ownernomer + '@s.whatsapp.net'
+const nyoutube = ('© XIAO SAN\nInstagram/FOLLOW :\nhttps://instagram.com/c/Granger_ambys')  //ubah di config biar ngk emror
+const ini_mark = `0@s.whatsapp.net`
+const ownernya = ownernomer + '6285798267620@s.whatsapp.net'
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/naze.jpg')
 
@@ -1007,7 +1007,7 @@ break
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *follow ig gua kalo ga mau bayar https://instagram.com/granger_ambys?igshid=YmMyMTA2M2Y=*\n\n*Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*\n\n*Atau klik link dibawah ini*\n_https://instagram.com/granger_ambys?igshid=YmMyMTA2M2Y=\n\n*Atau Transfer via*\n- *Dana Pulsa*\n Ke nomer berikut : 085798267620\n\n_Terima kasih_` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin follow ig gua silahkan https://instagram.com/granger_ambys*\n\n*Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*\n\n*Join gc offical *\n_https://chat.whatsapp.com/LR8q27mkkihJptchGvpBct_\n\n*Atau Transfer via*\n- *Dana pulsa*\n Ke nomer berikut : 085798267620\n\n_Terima kasih_` }, { quoted: m })
             }
             break
             case 'sc': {
@@ -1028,8 +1028,8 @@ break
   buttons: buttons,
   headerType: 4,
   contextInfo:{externalAdReply:{
-  title: 'AMBYS DOULUO',
-  body: 'follow ig gua', 
+  title: 'Naze Dev',
+  body: 'Subscribe My YouTube', 
   showAdAttribution: true,
   thumbnail: thumb,
   mediaType:2,
@@ -3191,13 +3191,13 @@ break
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'ig') {
                     if (!id) throw `No Query username, Example : ${prefix + command} ig cak_haho`
-                    let { result: anu } = await fetchJson(api('zenz', '/api/stalker/ig', { username: id }, 'fd7e32fbab'))
+                    let { result: anu } = await fetchJson(api('zenz', '/api/stalker/ig', { username: id }, 'https://api.xteam.xyz'))
                     if (anu.status == false) return m.reply(anu.result.message)
                     naze.sendMedia(m.chat, anu.caption.profile_hd, '', `⭔ Full Name : ${anu.caption.full_name}\n⭔ User Name : ${anu.caption.user_name}\n⭔ ID ${anu.caption.user_id}\n⭔ Followers : ${anu.caption.followers}\n⭔ Following : ${anu.caption.following}\n⭔ Bussines : ${anu.caption.bussines}\n⭔ Profesional : ${anu.caption.profesional}\n⭔ Verified : ${anu.caption.verified}\n⭔ Private : ${anu.caption.private}\n⭔ Bio : ${anu.caption.biography}\n⭔ Bio Url : ${anu.caption.bio_url}`, m)
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'npm') {
                     if (!id) throw `No Query username, Example : ${prefix + command} npm scrape-primbon`
-                    let { result: anu } = await fetchJson(api('zenz', '/api/stalker/npm', { query: id }, 'fd7e32fbab'))
+                    let { result: anu } = await fetchJson(api('zenz', '/api/stalker/npm', { query: id }, 'apikey'))
                     if (anu.status == false) return m.reply(anu.result.message)
                     m.reply(`⭔ Name : ${anu.name}\n⭔ Version : ${Object.keys(anu.versions)}\n⭔ Created : ${tanggal(anu.time.created)}\n⭔ Modified : ${tanggal(anu.time.modified)}\n⭔ Maintainers :\n ${anu.maintainers.map(v => `- ${v.name} : ${v.email}`).join('\n')}\n\n⭔ Description : ${anu.description}\n⭔ Homepage : ${anu.homepage}\n⭔ Keywords : ${anu.keywords}\n⭔ Author : ${anu.author.name}\n⭔ License : ${anu.license}\n⭔ Readme : ${anu.readme}`)
 		    db.data.users[m.sender].limit -= 1
@@ -3279,10 +3279,10 @@ break
                 if (!text) throw 'No Query Url!'
                 m.reply(mess.wait)
                 if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
-                    let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, 'fd7e32fbab'))
+                    let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, 'https://api.xteam.xyz'))
                     for (let media of anu.data) naze.sendFileUrl(m.chat, media, `Download Url Instagram From ${isUrl(text)[0]}`, m)
                 } else if (/\/stories\/([^\s&]+)/.test(isUrl(text)[0])) {
-                    let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, 'apikey'))
+                    let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, 'https://api.xteam.xyz'))
                     naze.sendFileUrl(m.chat, anu.media[0].url, `Download Url Instagram From ${isUrl(text)[0]}`, m)
                 }
             }
@@ -3290,7 +3290,7 @@ break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
                 m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/joox', { query: text }, 'fd7e32fbab'))
+                let anu = await fetchJson(api('zenz', '/downloader/joox', { query: text }, 'https://api.xteam.xyz'))
                 let msg = await naze.sendImage(m.chat, anu.result.img, `⭔ Title : ${anu.result.lagu}\n⭔ Album : ${anu.result.album}\n⭔ Singer : ${anu.result.penyanyi}\n⭔ Publish : ${anu.result.publish}\n⭔ Lirik :\n${anu.result.lirik.result}`, m)
                 naze.sendMessage(m.chat, { audio: { url: anu.result.mp4aLink }, mimetype: 'audio/mpeg', fileName: anu.result.lagu+'.m4a' }, { quoted: msg })
             }
@@ -3298,7 +3298,7 @@ break
             case 'soundcloud': case 'scdl': {
                 if (!text) throw 'No Query Title'
                 m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, 'fd7e32fbab'))
+                let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, 'https://api.xteam.xyz'))
                 let msg = await naze.sendImage(m.chat, anu.result.thumb, `⭔ Title : ${anu.result.title}\n⭔ Url : ${isUrl(text)[0]}`)
                 naze.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
@@ -3357,7 +3357,7 @@ break
 	        case 'fbdl': case 'fb': case 'facebook': {
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, 'fd7e32fbab'))
+                let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, 'https://api.xteam.xyz'))
                 naze.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `⭔ Title : ${anu.result.title}`}, { quoted: m })
             }
             break
@@ -3521,7 +3521,7 @@ ${id}`)
             break
             case 'gsmarena': {
             if (!text) throw `Example : ${prefix + command} samsung`
-            let res = await fetchJson(api('zenz', '/webzone/gsmarena', { query: text }, 'fd7e32fbab'))
+            let res = await fetchJson(api('zenz', '/webzone/gsmarena', { query: text }, 'https://api.xteam.xyz'))
             let { judul, rilis, thumb, ukuran, type, storage, display, inchi, pixel, videoPixel, ram, chipset, batrai, merek_batre, detail } = res.result
 let capt = `⭔ Title: ${judul}
 ⭔ Realease: ${rilis}
@@ -3564,7 +3564,7 @@ let capt = `⭔ Title: ${judul}
 		     }
                 break
                 case 'nowplayingbioskop': {
-            let res = await fetchJson(api('zenz', '/webzone/nowplayingbioskop', {}, 'fd7e32fbab'))
+            let res = await fetchJson(api('zenz', '/webzone/nowplayingbioskop', {}, 'https://api.xteam.xyz'))
             let capt = `Now Playing Bioskop\n\n`
             for (let i of res.result){
             capt += `⭔ Title: ${i.title}\n`
@@ -3576,7 +3576,7 @@ let capt = `⭔ Title: ${judul}
             break
             case 'aminio': {
             if (!text) throw `Example: ${prefix + command} free fire`
-            let res = await fetchJson(api('zenz', '/webzone/amino', { query: text }, 'fd7e32fbab'))
+            let res = await fetchJson(api('zenz', '/webzone/amino', { query: text }, 'https://api.xteam.xyz'))
             let capt = `Amino Search From : ${text}\n\n`
             for (let i of res.result){
             capt += `⭔ Community: ${i.community}\n`
@@ -3590,7 +3590,7 @@ let capt = `⭔ Title: ${judul}
             break
             case 'wattpad': {
             if (!text) throw `Example : ${prefix + command} love`
-            let res = await fetchJson(api('zenz', '/webzone/wattpad', { query: text }, 'fd7e32fbab'))
+            let res = await fetchJson(api('zenz', '/webzone/wattpad', { query: text }, 'https://api.xteam.xyz'))
             let { judul, dibaca, divote, bab, waktu, url, thumb, description } = res.result[0]
             let capt = `Wattpad From ${text}\n\n`
             capt += `⭔ Judul: ${judul}\n`
@@ -3624,7 +3624,7 @@ let capt = `⭔ Title: ${judul}
             break
             case 'drakor': {
             if (!text) throw `Example : ${prefix + command} love`
-            let res = await fetchJson(api('zenz', '/webzone/drakor', { query: text }, 'fd7e32fbab'))
+            let res = await fetchJson(api('zenz', '/webzone/drakor', { query: text }, 'https://api.xteam.xyz'))
             let capt = `Drakor Search From : ${text}\n\n`
             for (let i of res.result) {
             capt += `⭔ Judul: ${i.judul}\n`
@@ -3663,7 +3663,7 @@ let kominfo = `628119224545@s.whatsapp.net`
 let alfamart = `628111500959@s.whatsapp.net`
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
-            let jawab = `*Bot by Naze Dev* 
+            let jawab = `*Bot by XIAO SAN* 
 -Creator :  @${ownernya.split('@')[0]}\n-Lu : @${me.split('@')[0]}\n-Powered  : @${ini_mark.split('@')[0]}\n- :  @${qontak.split('@')[0]}\n- :  @${dana.split('@')[0]}\n- :  @${shopeeotp.split('@')[0]}\n- :  @${shopee.split('@')[0]}\n- :  @${tokopedia.split('@')[0]}\n- :  @${smartfrend.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${facebook.split('@')[0]}\n- :  @${pasarpolis.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${kominfo.split('@')[0]}\n- :  @${alfamart.split('@')[0]}`
             let ments = [ownernya, me, ini_mark, qontak, dana, shopeeotp, shopee, tokopedia, smartfrend, getcontact, facebook, pasarpolis, kominfo, alfamart]
             let buttons = [
@@ -3771,164 +3771,171 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
             case 'mgroup': {
-goup = ` *乂 Group Menu*
-
-``` ${prefix}linkgroup
- ${prefix}ephemeral [option]
- ${prefix}setppgc [image]
- ${prefix}setname [text]
- ${prefix}setdesc [text]
- ${prefix}group [option]
- ${prefix}editinfo [option]
- ${prefix}add @user
- ${prefix}kick @user
- ${prefix}hidetag [text]
- ${prefix}tagall [text]
- ${prefix}antilink [on/off]
- ${prefix}mute [on/off]
- ${prefix}promote @user
- ${prefix}demote @user
- ${prefix}vote [text]
- ${prefix}devote
- ${prefix}upvote
- ${prefix}cekvote
- ${prefix}hapusvote```
-`
+goup = `╭──❍ *Group Menu*
+│
+│⭔ ${prefix}linkgroup
+│⭔ ${prefix}ephemeral [option]
+│⭔ ${prefix}setppgc [image]
+│⭔ ${prefix}setname [text]
+│⭔ ${prefix}setdesc [text]
+│⭔ ${prefix}group [option]
+│⭔ ${prefix}editinfo [option]
+│⭔ ${prefix}add @user
+│⭔ ${prefix}kick @user
+│⭔ ${prefix}hidetag [text]
+│⭔ ${prefix}tagall [text]
+│⭔ ${prefix}antilink [on/off]
+│⭔ ${prefix}mute [on/off]
+│⭔ ${prefix}promote @user
+│⭔ ${prefix}demote @user
+│⭔ ${prefix}vote [text]
+│⭔ ${prefix}devote
+│⭔ ${prefix}upvote
+│⭔ ${prefix}cekvote
+│⭔ ${prefix}hapusvote
+│
+╰─────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, goup, nyoutube, m, {quoted: fkontak})
             }
             break
       case 'mwebzone': {
-wbzone = ` *乂 Webzone Menu*
-
-``` ${prefix}playstore
- ${prefix}gsmarena
- ${prefix}jadwalbioskop
- ${prefix}nowplayingbioskop
- ${prefix}aminio
- ${prefix}wattpad
- ${prefix}webtoons
- ${prefix}drakor```
-`
+wbzone = `╭──❍ *Webzone Menu*
+│
+│⭔ ${prefix}playstore
+│⭔ ${prefix}gsmarena
+│⭔ ${prefix}jadwalbioskop
+│⭔ ${prefix}nowplayingbioskop
+│⭔ ${prefix}aminio
+│⭔ ${prefix}wattpad
+│⭔ ${prefix}webtoons
+│⭔ ${prefix}drakor
+│
+╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, wbzone, nyoutube, m, {quoted: fkontak})
             }
             break
             case 'mdownloader': {
-dwnloader = ` *乂 Downloader Menu*
-
- ```${prefix}tiktoknowm [url]
- ${prefix}tiktokwm [url]
- ${prefix}tiktokmp3 [url]
- ${prefix}instagram [url]
- ${prefix}twitter [url]
- ${prefix}twittermp3 [url]
- ${prefix}facebook [url]
- ${prefix}pinterestdl [url]
- ${prefix}ytmp3 [url]
- ${prefix}ytmp4 [url]
- ${prefix}getmusic [query]
- ${prefix}getvideo [query]
- ${prefix}umma [url]
- ${prefix}joox [query]
- ${prefix}soundcloud [url]```
-`
+dwnloader = `╭──❍ *Downloader Menu*
+│
+│⭔ ${prefix}tiktoknowm [url]
+│⭔ ${prefix}tiktokwm [url]
+│⭔ ${prefix}tiktokmp3 [url]
+│⭔ ${prefix}instagram [url]
+│⭔ ${prefix}twitter [url]
+│⭔ ${prefix}twittermp3 [url]
+│⭔ ${prefix}facebook [url]
+│⭔ ${prefix}pinterestdl [url]
+│⭔ ${prefix}ytmp3 [url]
+│⭔ ${prefix}ytmp4 [url]
+│⭔ ${prefix}getmusic [query]
+│⭔ ${prefix}getvideo [query]
+│⭔ ${prefix}umma [url]
+│⭔ ${prefix}joox [query]
+│⭔ ${prefix}soundcloud [url]
+│
+╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, dwnloader, nyoutube, m, {quoted: fkontak})
             }
             break
             case 'msearch': {
-sarch = ` *乂 Search Menu*
-
-``` ${prefix}play [query]
- ${prefix}yts [query]
- ${prefix}google [query]
- ${prefix}gimage [query]
- ${prefix}pinterest [query]
- ${prefix}wallpaper [query]
- ${prefix}wikimedia [query]
- ${prefix}ytsearch [query]
- ${prefix}ringtone [query]
- ${prefix}stalk [option] [query]```
-`
+sarch = `╭──❍ *Search Menu*
+│
+│⭔ ${prefix}play [query]
+│⭔ ${prefix}yts [query]
+│⭔ ${prefix}google [query]
+│⭔ ${prefix}gimage [query]
+│⭔ ${prefix}pinterest [query]
+│⭔ ${prefix}wallpaper [query]
+│⭔ ${prefix}wikimedia [query]
+│⭔ ${prefix}ytsearch [query]
+│⭔ ${prefix}ringtone [query]
+│⭔ ${prefix}stalk [option] [query]
+│
+╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, sarch, nyoutube, m, {quoted: fkontak})
             }
             break
             case 'mrandom': {
-rndom = ` *乂 Random Menu*
-
-``` ${prefix}gbtku
- ${prefix}coffe
- ${prefix}quotesanime
- ${prefix}motivasi
- ${prefix}dilanquote
- ${prefix}bucinquote
- ${prefix}katasenja
- ${prefix}puisi
- ${prefix}couple
- ${prefix}anime
- ${prefix}waifu```
-`
+rndom = `╭──❍ *Random Menu*
+│
+│⭔ ${prefix}gbtku
+│⭔ ${prefix}coffe
+│⭔ ${prefix}quotesanime
+│⭔ ${prefix}motivasi
+│⭔ ${prefix}dilanquote
+│⭔ ${prefix}bucinquote
+│⭔ ${prefix}katasenja
+│⭔ ${prefix}puisi
+│⭔ ${prefix}couple
+│⭔ ${prefix}anime
+│⭔ ${prefix}waifu
+│
+╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, rndom, nyoutube, m, {quoted: fkontak})
             }
             break
             case 'mtextpro': {
-txtpro = ` *乂 Text Pro Menu*
-
- ```${prefix}3dchristmas
- ${prefix}3ddeepsea
- ${prefix}americanflag
- ${prefix}3dscifi
- ${prefix}3drainbow
- ${prefix}3dwaterpipe
- ${prefix}halloweenskeleton
- ${prefix}sketch
- ${prefix}bluecircuit
- ${prefix}space
- ${prefix}metallic
- ${prefix}fiction
- ${prefix}greenhorror
- ${prefix}transformer
- ${prefix}berry
- ${prefix}thunder
- ${prefix}magma
- ${prefix}3dcrackedstone
- ${prefix}3dneonlight
- ${prefix}impressiveglitch
- ${prefix}naturalleaves
- ${prefix}fireworksparkle
- ${prefix}matrix
- ${prefix}dropwater
- ${prefix}harrypotter
- ${prefix}foggywindow
- ${prefix}neondevils
- ${prefix}christmasholiday
- ${prefix}3dgradient
- ${prefix}blackpink
- ${prefix}gluetext```
-`
+txtpro = `╭──❍ *Text Pro Menu*
+│
+│⭔ ${prefix}3dchristmas
+│⭔ ${prefix}3ddeepsea
+│⭔ ${prefix}americanflag
+│⭔ ${prefix}3dscifi
+│⭔ ${prefix}3drainbow
+│⭔ ${prefix}3dwaterpipe
+│⭔ ${prefix}halloweenskeleton
+│⭔ ${prefix}sketch
+│⭔ ${prefix}bluecircuit
+│⭔ ${prefix}space
+│⭔ ${prefix}metallic
+│⭔ ${prefix}fiction
+│⭔ ${prefix}greenhorror
+│⭔ ${prefix}transformer
+│⭔ ${prefix}berry
+│⭔ ${prefix}thunder
+│⭔ ${prefix}magma
+│⭔ ${prefix}3dcrackedstone
+│⭔ ${prefix}3dneonlight
+│⭔ ${prefix}impressiveglitch
+│⭔ ${prefix}naturalleaves
+│⭔ ${prefix}fireworksparkle
+│⭔ ${prefix}matrix
+│⭔ ${prefix}dropwater
+│⭔ ${prefix}harrypotter
+│⭔ ${prefix}foggywindow
+│⭔ ${prefix}neondevils
+│⭔ ${prefix}christmasholiday
+│⭔ ${prefix}3dgradient
+│⭔ ${prefix}blackpink
+│⭔ ${prefix}gluetext
+│
+╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, txtpro, nyoutube, m, {quoted: fkontak})
             }
             break
             case 'mphotooxy': {
-potooxy = ` *乂 Photo Oxy Menu*
-
- ```${prefix}shadow
- ${prefix}romantic
- ${prefix}smoke
- ${prefix}burnpapper
- ${prefix}naruto
- ${prefix}lovemsg
- ${prefix}grassmsg
- ${prefix}lovetext
- ${prefix}coffecup
- ${prefix}butterfly
- ${prefix}harrypotter
- ${prefix}retrolol```
-`
+potooxy = `╭──❍ *Photo Oxy Menu*
+│
+│⭔ ${prefix}shadow
+│⭔ ${prefix}romantic
+│⭔ ${prefix}smoke
+│⭔ ${prefix}burnpapper
+│⭔ ${prefix}naruto
+│⭔ ${prefix}lovemsg
+│⭔ ${prefix}grassmsg
+│⭔ ${prefix}lovetext
+│⭔ ${prefix}coffecup
+│⭔ ${prefix}butterfly
+│⭔ ${prefix}harrypotter
+│⭔ ${prefix}retrolol
+│
+╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, potooxy, nyoutube, m, {quoted: fkontak})
             }
@@ -4455,7 +4462,6 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │⭔ ${prefix}setmenu [option]
 │
 ╰────❍
- 
 _Donasi Ngab_\n_Jangan Ngarep Free Mulu_`
                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
